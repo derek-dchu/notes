@@ -47,4 +47,13 @@ mysqld_safe --user=mysql &
 mysql.server start
 mysql_secure_installation
 ```
-or we can follow [this post](http://howtolamp.com/lamp/mysql/5.6/securing/) to do those settings manually. 
+or we can follow [this post](http://howtolamp.com/lamp/mysql/5.6/securing/) to do those settings manually.
+
+*[Optional] Create an new accout
+``` shell
+mysql -u root -p
+
+mysql> CREATE USER '<username>'@'localhost' IDENTIFIED BY '<password>';
+mysql> GRANT ALL PRIVILEGES ON *.* TO '<username>'@'localhost' WITH GRANT OPTION;
+```
+Above snippet creates an new local account with full privileges as root. We can set different privileges to it via GRANT command or no privilege by ignoring GRANT.
