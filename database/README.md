@@ -65,3 +65,27 @@ DELETE vs TRUNCATE:
 * DELETE (DML), TRUNCATE (DDL)
 * DELETE can be rolled back, TRUNCATE can not
 * DELETE can has conditions, TRUNCATE will delete the whole table
+
+JOINs
+-----
+* Without constraint:  
+
+| number of result | A join B | A left outer join B | A right outer join B |
+|------------------|----------|---------------------|----------------------|
+| max              | mn       | mn                  | mn                   |
+| min              | 0        | m                   | n                    |
+
+* A has PK, B is FK of A (right outer join is inner join):  
+
+| number of result | A join B | A left outer join B | A right outer join B |
+|------------------|----------|---------------------|----------------------|
+| max              | n        | m+n-1               | n                    |
+| min              | n        | m                   | n                    |
+
+* PL/SQL vs T-SQL  
+
+|                  | PL/SQL                                                   | T-SQL                                                  |  
+|------------------|----------------------------------------------------------|--------------------------------------------------------|  
+| Left outer join  | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno = d.deptno(+) | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno *= d.deptno |  
+| Right outer join | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno(+) = d.deptno | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno =* d.deptno |  
+
