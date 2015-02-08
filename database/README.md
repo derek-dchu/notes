@@ -89,3 +89,12 @@ JOINs
 | Left outer join  | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno = d.deptno(+) | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno *= d.deptno |  
 | Right outer join | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno(+) = d.deptno | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno =* d.deptno |  
 
+Multiple-row comparison operators
+---------------------------------
+IN, ANY, ALL
+
+* x > ANY list <=> x > min(list)
+* x > ALL list <=> x > max(list)
+* x < ANY list <=> x < max(list)
+* x < ALL list <=> x < min(list)
+* x IN list <=> x = ANY list
