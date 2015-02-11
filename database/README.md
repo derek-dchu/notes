@@ -1,5 +1,4 @@
-Normalization & Denormalization
--------------------------------
+## Normalization & Denormalization
 Normalization is to break the table into small tables to reduce data redundancy and inconsistence. (less store space with lower performance)
 
 Denormalization is to join small tables into big table to increase performance.
@@ -41,33 +40,27 @@ To
 * BCNF  
 Prevent the dependency between key attributes
 
-Key
----
+## Key
 * PK: Primary Key, can not be None.
 * UK: Unique Key, can be None.
 * CK: Candidate Key, Superset of keys. Each element of CK can be PK, we usually choose the one with less elements within it.
 
-Diagram
--------
+## Diagram
 E-R diagram: Entity (Rectangle) - Role (Diamond)
 
-BLOB
-----
+## BLOB
 Binary Large Object, a collection of binary data stored as a single entity in DBMS.
 
-CLOB
-----
+## CLOB
 Character Large Object, a collection of character data in DBMS, specified character encoding and string-oriented operations.
 
-SQL
----
+## SQL
 DELETE vs TRUNCATE:
 * DELETE (DML), TRUNCATE (DDL)
 * DELETE can be rolled back, TRUNCATE can not
 * DELETE can has conditions, TRUNCATE will delete the whole table
 
-JOINs
------
+## JOINs
 * Without constraint:  
 
 | number of result | A join B | A left outer join B | A right outer join B |
@@ -89,8 +82,7 @@ JOINs
 | Left outer join  | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno = d.deptno(+) | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno *= d.deptno |  
 | Right outer join | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno(+) = d.deptno | SELECT * <br>FROM emp e, dept d <br>WHERE e.deptno =* d.deptno |  
 
-Multiple-row comparison operators
----------------------------------
+## Multiple-row comparison operators
 IN, ANY, ALL
 
 * x > ANY list <=> x > min(list)
@@ -98,3 +90,6 @@ IN, ANY, ALL
 * x < ANY list <=> x < max(list)
 * x < ALL list <=> x < min(list)
 * x IN list <=> x = ANY list
+
+## Many-to-many <=> one-to-many or many-to-one
+enable/disable unique constraint to one of two foreign keys in junction table.
