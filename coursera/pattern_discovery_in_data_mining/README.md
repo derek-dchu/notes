@@ -76,3 +76,43 @@ Any subset of a frequent items must be frequent.
 * If any subset of an patterns S is infrequent, then there is no chance for S to be frequent.
 
 #### Apriori: A Candidate Generation & Test Approach
+
+
+## Pattern Evaluation
+Problem with support framework: support measures is objective, the generated patterns/rules may not be interesting.
+
+### Interestingness Measures
+| Measure | Range | Null-invariance |  
+|---------|-------|-----------------|  
+| Chi-square | [0, +∞) | No |  
+| Lift | [0, +∞) | No |  
+| All confidence | [0, 1] | Yes |  
+| Jaccard | [0, 1] | Yes |  
+| Cosine | [0, 1] | Yes |  
+| Kulczynski | [0, 1] | Yes |  
+| Max confidence | [0, 1] | Yes |  
+
+#### Lift
+`lift(B, C) = c(B -> C) / s(C) = s(B U C) / (s(B) x s(C))`, s: relative support.
+
+Lift(B, C) may tell how B and C are correlated:
+1. = 1: B and C are independent
+2. > 1: positively correlated
+3. < 1: negatively correlated
+
+#### Chi-square
+`Chi-square = sum((Observed - Expected) / Expected)`, for all combination of observations.
+
+Chi-square = 0: independent
+Chi-square > 0: correlated, positive: Observed > Expected or negative: Observed < Expected.
+
+#### Null-invariance
+Value does not change with the # of null-transactions.
+
+* List and Chi-square are not null-invariance which is not to evaluate data that contain too many or too few null transactions.
+* under measure that is not null-invariance:
+  1. too few null transactions, we always get the result that two variables are independent.
+  2. too many null transactions, we always get a strong positive correlation.
+
+
+## Mining Diverse Patterns
